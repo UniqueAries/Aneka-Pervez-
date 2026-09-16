@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aneka Pervez — Digital Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B2038;
+    --navy-deep: #071422;
+    --navy-soft: #133149;
+    --teal: #1F9E93;
+    --teal-light: #5FC9BD;
+    --teal-pale: #DCF2EF;
+    --grey-900: #17222B;
+    --grey-700: #4C5760;
+    --grey-500: #7A848C;
+
+    --bg-page: #F3F5F6;
+    --bg-card: #FFFFFF;
+    --text-body: #17222B;
+    --text-muted: #56626C;
+    --border: #E1E6E9;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg-page: #0D1720;
+      --bg-card: #16232E;
+      --text-body: #E7ECEF;
+      --text-muted: #A9B4BC;
+      --border: #263440;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg-page: #0D1720;
+    --bg-card: #16232E;
+    --text-body: #E7ECEF;
+    --text-muted: #A9B4BC;
+    --border: #263440;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-page);
+    color: var(--text-body);
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    color: var(--text-body);
+    line-height: 1.15;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  img, svg { max-width: 100%; display: block; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11, 32, 56, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+  .logo span { color: var(--teal-light); }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+  }
+  nav a {
+    color: #CBD6DD;
+    font-size: 0.92rem;
+    transition: color 0.2s ease;
+  }
+  nav a:hover, nav a:focus-visible { color: var(--teal-light); }
+  .menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 24px;
+    position: relative;
+  }
+  .menu-btn span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  .menu-btn span:nth-child(1) { top: 0; }
+  .menu-btn span:nth-child(2) { top: 11px; }
+  .menu-btn span:nth-child(3) { top: 22px; }
+  .menu-btn.open span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+  .menu-btn.open span:nth-child(2) { opacity: 0; }
+  .menu-btn.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+
+  /* ---------- Section base ---------- */
+  section { padding: 92px 0; }
+  .section-head { margin-bottom: 48px; max-width: 640px; }
+  .section-head .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .section-head .kicker::before {
+    content: "";
+    width: 20px;
+    height: 3px;
+    background: var(--teal);
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .section-head h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+  .on-dark .section-head h2, .on-dark p { color: #fff; }
+  .on-dark .section-head .kicker { color: var(--teal-light); }
+  .on-dark .section-head .kicker::before { background: var(--teal-light); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: #fff;
+    padding: 100px 0 110px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    color: var(--teal-light);
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .hero p.lead {
+    color: #C6D2D9;
+    font-size: 1.08rem;
+    max-width: 46ch;
+    margin-bottom: 34px;
+  }
+  .btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  }
+  .btn-primary { background: var(--teal); color: #06231F; }
+  .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.35); color: #fff; }
+  .btn-ghost:hover { border-color: var(--teal-light); color: var(--teal-light); transform: translateY(-2px); }
+
+  .hero-art { position: relative; height: 320px; }
+  .hero-art svg { width: 100%; height: 100%; }
+
+  /* ---------- About ---------- */
+  .about .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .about p { color: var(--text-muted); margin-bottom: 16px; max-width: 56ch; }
+  blockquote {
+    border-left: 3px solid var(--teal);
+    padding: 4px 0 4px 22px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text-body);
+    margin-top: 28px;
+  }
+  .about-facts { display: grid; gap: 18px; }
+  .fact-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .fact-card .label { font-size: 0.82rem; color: var(--teal); font-weight: 600; margin-bottom: 6px; }
+  .fact-card .value { font-size: 1.02rem; }
+
+  /* ---------- Education (timeline) ---------- */
+  .timeline { position: relative; padding-left: 34px; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item { position: relative; padding-bottom: 34px; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before {
+    content: attr(data-step);
+    position: absolute;
+    left: -34px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #06231F;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .timeline-item h3 { font-size: 1.12rem; margin-bottom: 4px; }
+  .timeline-item .org { color: var(--teal); font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
+  .timeline-item p { color: var(--text-muted); max-width: 56ch; }
+
+  /* ---------- Skills ---------- */
+  .skills { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%); }
+  .skill-cloud { display: flex; flex-wrap: wrap; gap: 12px; }
+  .skill-pill {
+    border: 1px solid rgba(95, 201, 189, 0.4);
+    color: #E5F3F1;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    background: rgba(255,255,255,0.03);
+  }
+
+  /* ---------- Services ---------- */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 22px;
+  }
+  .service-card .num { color: var(--teal); font-family: 'Fraunces', serif; font-size: 1.3rem; margin-bottom: 10px; }
+  .service-card h3 { font-size: 1.02rem; margin-bottom: 8px; }
+  .service-card p { color: var(--text-muted); font-size: 0.92rem; }
+
+  /* ---------- Featured project ---------- */
+  .project {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: #fff;
+  }
+  .project .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+  .project p { color: #C6D2D9; margin-bottom: 14px; max-width: 52ch; }
+  .project ul { margin: 18px 0 30px; color: #C6D2D9; padding-left: 20px; }
+  .project ul li { margin-bottom: 8px; }
+
+  .mock {
+    background: #0F2C42;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+  }
+  .mock-bar { display: flex; gap: 6px; padding: 12px 16px; background: rgba(255,255,255,0.04); }
+  .mock-bar span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+  .mock-body { padding: 26px 24px 32px; }
+  .mock-title { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--teal-light); margin-bottom: 6px; }
+  .mock-sub { color: #9FB2BD; font-size: 0.85rem; margin-bottom: 22px; }
+  .bead-row { display: flex; gap: 10px; margin-bottom: 22px; }
+  .bead { width: 34px; height: 34px; border-radius: 50%; }
+  .b1{background:#5FC9BD;} .b2{background:#1F9E93;} .b3{background:#C9D6DA;} .b4{background:#8FB8B3;} .b5{background:#0F5A52;}
+  .mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .mock-tile { background: rgba(255,255,255,0.05); border-radius: 8px; height: 58px; display: flex; align-items: center; padding: 0 14px; font-size: 0.8rem; color: #C6D2D9; }
+
+  /* ---------- Certificates ---------- */
+  .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .cert-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 26px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .cert-badge {
+    flex-shrink: 0;
+    width: 46px; height: 46px;
+    border-radius: 10px;
+    background: var(--teal-pale);
+    color: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 700;
+  }
+  .cert-card h3 { font-size: 1.02rem; margin-bottom: 5px; }
+  .cert-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+  /* ---------- Connect ---------- */
+  .connect { background: var(--navy-deep); color: #fff; }
+  .connect .section-head p { color: #A9B4BC; }
+  .connect-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .connect-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 10px;
+    padding: 20px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .connect-card:hover { background: rgba(95,201,189,0.1); border-color: var(--teal-light); transform: translateY(-2px); }
+  .mono {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #06231F;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .connect-card .c-name { font-weight: 600; font-size: 0.95rem; }
+  .connect-card .c-sub { color: #9FB2BD; font-size: 0.78rem; }
+
+  footer {
+    background: var(--navy-deep);
+    color: #7C8B95;
+    text-align: center;
+    padding: 26px 0 34px;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  @media (max-width: 860px) {
+    .hero .wrap, .about .wrap, .project .wrap { grid-template-columns: 1fr; }
+    .hero-art { height: 220px; order: -1; }
+    .service-grid { grid-template-columns: repeat(2, 1fr); }
+    .cert-grid { grid-template-columns: 1fr; }
+    .connect-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    nav ul { position: fixed; top: 64px; left: 0; right: 0; background: var(--navy-deep); flex-direction: column; padding: 18px 28px; gap: 18px; transform: translateY(-130%); transition: transform 0.25s ease; }
+    nav ul.open { transform: translateY(0); }
+    .menu-btn { display: block; }
+    section { padding: 64px 0; }
+    .service-grid { grid-template-columns: 1fr; }
+    .connect-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-bar">
+    <div class="logo">Aneka<span>.</span></div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav>
+      <ul id="navList">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#project">Project</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#connect">Connect</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-eyebrow">Digital marketing portfolio</div>
+      <h1>Careful thinking, turned into digital growth.</h1>
+      <p class="lead">I'm Aneka Pervez — a teacher by training and a digital marketer by practice, helping small brands plan, present and grow online.</p>
+      <div class="btn-row">
+        <a href="#project" class="btn btn-primary">See my work</a>
+        <a href="#connect" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="150" r="110" fill="none" stroke="#1F9E93" stroke-opacity="0.35" stroke-width="1.5"/>
+        <circle cx="150" cy="150" r="70" fill="none" stroke="#5FC9BD" stroke-opacity="0.5" stroke-width="1.5"/>
+        <circle cx="150" cy="150" r="28" fill="#1F9E93" fill-opacity="0.25"/>
+        <circle cx="150" cy="40" r="12" fill="#5FC9BD"/>
+        <circle cx="255" cy="95" r="9" fill="#1F9E93"/>
+        <circle cx="270" cy="210" r="14" fill="#5FC9BD" fill-opacity="0.8"/>
+        <circle cx="90" cy="255" r="10" fill="#1F9E93"/>
+        <line x1="150" y1="40" x2="150" y2="150" stroke="#5FC9BD" stroke-opacity="0.4"/>
+        <line x1="255" y1="95" x2="150" y2="150" stroke="#1F9E93" stroke-opacity="0.4"/>
+        <line x1="270" y1="210" x2="150" y2="150" stroke="#5FC9BD" stroke-opacity="0.4"/>
+        <line x1="90" y1="255" x2="150" y2="150" stroke="#1F9E93" stroke-opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <div class="section-head">
+        <div class="kicker">About me</div>
+        <h2>From the classroom to the client brief.</h2>
+      </div>
+      <p>I'm Aneka Pervez, a primary school teacher with years of classroom experience, now building a parallel career in digital marketing. I hold a Masters in Economics from Fatima Jinnah Women University, Rawalpindi, and have completed practical digital marketing training through Bano Qabil Kahuta and DigiSkills.</p>
+      <p>Alongside this, I run Zaib-o-Zan, my own e-commerce brand for bracelets and anklets, which has become the project where I put every skill — from Shopify to social media to content — into real practice.</p>
+      <blockquote>"Teaching taught me patience and clarity. Digital marketing gave me a place to put both to work."</blockquote>
+    </div>
+    <div class="about-facts">
+      <div class="fact-card">
+        <div class="label">Background</div>
+        <div class="value">Primary school teacher, 5+ years of experience</div>
+      </div>
+      <div class="fact-card">
+        <div class="label">Currently building</div>
+        <div class="value">Zaib-o-Zan — a bracelets & anklets brand on Shopify</div>
+      </div>
+      <div class="fact-card">
+        <div class="label">Focus areas</div>
+        <div class="value">Social media, Shopify e-commerce, content & SEO</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Education & training</div>
+      <h2>My learning journey</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item" data-step="1">
+        <h3>Masters in Economics</h3>
+        <div class="org">Fatima Jinnah Women University, Rawalpindi</div>
+        <p>Academic foundation in economics, research and analytical thinking.</p>
+      </div>
+      <div class="timeline-item" data-step="2">
+        <h3>Digital Marketing Training</h3>
+        <div class="org">Bano Qabil Kahuta</div>
+        <p>Hands-on, project-based training covering social media, SEO, Shopify and Canva design.</p>
+      </div>
+      <div class="timeline-item" data-step="3">
+        <h3>Digital Marketing Certification</h3>
+        <div class="org">DigiSkills</div>
+        <p>Structured coursework in digital marketing fundamentals and online promotion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills on-dark" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">My skill set</div>
+      <h2>Skills I bring to a project</h2>
+    </div>
+    <div class="skill-cloud">
+      <span class="skill-pill">Digital Marketing</span>
+      <span class="skill-pill">Social Media Marketing</span>
+      <span class="skill-pill">Meta Ads</span>
+      <span class="skill-pill">SEO</span>
+      <span class="skill-pill">Content Writing</span>
+      <span class="skill-pill">Canva Designing</span>
+      <span class="skill-pill">Shopify</span>
+      <span class="skill-pill">Lead Generation</span>
+      <span class="skill-pill">Competitor Analysis</span>
+      <span class="skill-pill">Content Calendar</span>
+      <span class="skill-pill">Reels Generation</span>
+      <span class="skill-pill">Email Marketing</span>
+      <span class="skill-pill">Product Hunting</span>
+      <span class="skill-pill">AI Tools</span>
+      <span class="skill-pill">Teaching</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What I offer</div>
+      <h2>Digital marketing services</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-card"><div class="num">01</div><h3>Digital Marketing</h3><p>Marketing strategy, customer journey mapping and online promotion planning.</p></div>
+      <div class="service-card"><div class="num">02</div><h3>Social Media Marketing</h3><p>Facebook and Instagram management, content planning and brand communication.</p></div>
+      <div class="service-card"><div class="num">03</div><h3>Meta Ads</h3><p>Campaign structure, objectives, audience targeting and ad setup practice.</p></div>
+      <div class="service-card"><div class="num">04</div><h3>SEO & Keyword Research</h3><p>Search intent, keyword research, on-page SEO and basic audits.</p></div>
+      <div class="service-card"><div class="num">05</div><h3>Content Writing</h3><p>Marketing copy, captions, blog ideas and everyday brand messaging.</p></div>
+      <div class="service-card"><div class="num">06</div><h3>Canva Designing</h3><p>Social posts, promotional graphics, banners and presentation design.</p></div>
+      <div class="service-card"><div class="num">07</div><h3>Shopify E-Commerce</h3><p>Store setup, theme customization, navigation and product presentation.</p></div>
+      <div class="service-card"><div class="num">08</div><h3>Lead Generation</h3><p>Basic lead research, data collection and prospecting concepts.</p></div>
+      <div class="service-card"><div class="num">09</div><h3>Competitor Analysis</h3><p>Researching competitors, products, pricing and online presence.</p></div>
+      <div class="service-card"><div class="num">10</div><h3>Content Calendar</h3><p>Planning consistent, organized posting schedules across platforms.</p></div>
+      <div class="service-card"><div class="num">11</div><h3>Reels Generation</h3><p>Short-form video ideas and content planning for Instagram and TikTok.</p></div>
+      <div class="service-card"><div class="num">12</div><h3>Email Marketing</h3><p>Campaign planning and email marketing concepts for customer outreach.</p></div>
+      <div class="service-card"><div class="num">13</div><h3>Product Hunting</h3><p>Exploring product demand, market interest and competition.</p></div>
+      <div class="service-card"><div class="num">14</div><h3>AI Tools</h3><p>Using ChatGPT and AI-assisted workflows for everyday marketing tasks.</p></div>
+      <div class="service-card"><div class="num">15</div><h3>Teaching</h3><p>Breaking ideas into clear, simple steps — a skill built over years in the classroom.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECT -->
+<section class="project on-dark" id="project">
+  <div class="wrap">
+    <div>
+      <div class="section-head">
+        <div class="kicker">Featured project</div>
+        <h2>Zaib-o-Zan — a bracelets & anklets store</h2>
+      </div>
+      <p>Zaib-o-Zan is my own jewelry brand, built for the Pakistani community and focused on handcrafted bracelets and anklets. The Shopify store brings together brand identity, product presentation and social promotion into one storefront.</p>
+      <ul>
+        <li>Shopify store setup and theme customization</li>
+        <li>Brand-consistent product presentation</li>
+        <li>Catalog organization for bracelets and anklets</li>
+        <li>Social media integration for the brand</li>
+        <li>Pricing and collection structure</li>
+      </ul>
+      <a href="https://5hwiw1-s2.myshopify.com/" target="_blank" rel="noopener" class="btn btn-primary">Visit the store</a>
+    </div>
+    <div class="mock">
+      <div class="mock-bar"><span></span><span></span><span></span></div>
+      <div class="mock-body">
+        <div class="mock-title">Zaib-o-Zan</div>
+        <div class="mock-sub">Bracelets & anklets, made for you</div>
+        <div class="bead-row">
+          <div class="bead b1"></div>
+          <div class="bead b2"></div>
+          <div class="bead b3"></div>
+          <div class="bead b4"></div>
+          <div class="bead b5"></div>
+        </div>
+        <div class="mock-grid">
+          <div class="mock-tile">Bracelets</div>
+          <div class="mock-tile">Anklets</div>
+          <div class="mock-tile">New Arrivals</div>
+          <div class="mock-tile">Collections</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Certificates</div>
+      <h2>Training I've completed</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-badge">BQ</div>
+        <div>
+          <h3>Bano Qabil Kahuta</h3>
+          <p>Certificate of completion — Digital Marketing training programme.</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">DS</div>
+        <div>
+          <h3>DigiSkills</h3>
+          <p>Certificate of completion — Digital Marketing course.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section class="connect" id="connect">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Let's connect</div>
+      <h2>Get in touch</h2>
+      <p>Open to freelance projects, collaborations and learning opportunities in digital marketing and e-commerce.</p>
+    </div>
+    <div class="connect-grid">
+      <a class="connect-card" href="mailto:zaibozan1@gmail.com">
+        <div class="mono">Em</div>
+        <div><div class="c-name">Email</div><div class="c-sub">zaibozan1@gmail.com</div></div>
+      </a>
+      <a class="connect-card" href="https://5hwiw1-s2.myshopify.com/" target="_blank" rel="noopener">
+        <div class="mono">Sh</div>
+        <div><div class="c-name">Shopify Store</div><div class="c-sub">Zaib-o-Zan</div></div>
+      </a>
+      <a class="connect-card" href="https://www.linkedin.com/in/aneka-satti/" target="_blank" rel="noopener">
+        <div class="mono">In</div>
+        <div><div class="c-name">LinkedIn</div><div class="c-sub">Professional profile</div></div>
+      </a>
+      <a class="connect-card" href="https://wa.me/923095907349" target="_blank" rel="noopener">
+        <div class="mono">Wa</div>
+        <div><div class="c-name">WhatsApp</div><div class="c-sub">Quick chat</div></div>
+      </a>
+      <a class="connect-card" href="https://web.facebook.com/profile.php?id=61591204604219&sk=about" target="_blank" rel="noopener">
+        <div class="mono">Fb</div>
+        <div><div class="c-name">Facebook</div><div class="c-sub">Profile</div></div>
+      </a>
+      <a class="connect-card" href="https://www.instagram.com/" target="_blank" rel="noopener">
+        <div class="mono">Ig</div>
+        <div><div class="c-name">Instagram</div><div class="c-sub">Follow along</div></div>
+      </a>
+      <a class="connect-card" href="https://www.tiktok.com/@zumarstudio" target="_blank" rel="noopener">
+        <div class="mono">Tk</div>
+        <div><div class="c-name">TikTok</div><div class="c-sub">@zumarstudio</div></div>
+      </a>
+      <a class="connect-card" href="https://www.youtube.com/channel/UCsk8BUOASocjvSjYStDbz7w" target="_blank" rel="noopener">
+        <div class="mono">Yt</div>
+        <div><div class="c-name">YouTube</div><div class="c-sub">Channel</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Aneka Pervez. Built with care.
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navList = document.getElementById('navList');
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('open');
+    navList.classList.toggle('open');
+  });
+  navList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuBtn.classList.remove('open');
+      navList.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
